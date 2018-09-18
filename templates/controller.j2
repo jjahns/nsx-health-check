@@ -1,0 +1,31 @@
+{{ inventory_hostname }}
+
+get services:
+{{ controller_get_services.stdout }}
+
+get control-cluster status verbose:
+{{ controller_get_control_cluster_status_verbose.stdout }}
+
+get ntp:
+{{ controller_get_ntp.stdout }}
+
+get ntp associations:
+{{ controller_get_ntp_associations.stdout }}
+
+get clock:
+{{ controller_get_clock.stdout }}
+
+get managers:
+{{ controller_get_managers.stdout }}
+
+get uptime:
+{{ controller_get_uptime.stdout }}
+
+get transport node status:
+{{ controller_get_transport_node_status.stdout }}
+
+get configuration:
+{{ controller_get_configuration.stdout }}
+
+get sockets | find 5671:
+{{ controller_get_sockets.stdout }}

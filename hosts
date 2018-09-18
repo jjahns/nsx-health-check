@@ -1,0 +1,22 @@
+[nsxmanager]
+nsxmgr01 ansible_host=nsxmgr01.mhos.eng.vmware.com
+
+[nsxcontroller]
+nsxctrl01 ansible_host=nsxctrl01.mhos.eng.vmware.com
+nsxctrl02 ansible_host=nsxctrl02.mhos.eng.vmware.com
+nsxctrl03 ansible_host=nsxctrl03.mhos.eng.vmware.com
+
+[nsxedge]
+nsxedge01 ansible_host=nsxedge01.mhos.eng.vmware.com
+nsxedge02 ansible_host=nsxedge02.mhos.eng.vmware.com
+nsxedge03 ansible_host=nsxedge03.mhos.eng.vmware.com
+nsxedge04 ansible_host=nsxedge04.mhos.eng.vmware.com
+
+[nsx:children]
+nsxmanager
+nsxcontroller
+nsxedge
+
+[nsx:vars]
+ansible_user=admin
+ansible_ssh_pass=MHOS@dm1n!

@@ -1,0 +1,35 @@
+{{ inventory_hostname }}
+
+get services:
+{{ manager_get_services.stdout }}
+
+get management-cluster status:
+{{ manager_get_management_cluster_status.stdout }}
+
+get ntp:
+{{ manager_get_ntp.stdout }}
+
+get ntp associations:
+{{ manager_get_ntp_associations.stdout }}
+
+get clock:
+{{ manager_get_clock.stdout }}
+
+get uptime:
+{{ manager_get_uptime.stdout }}
+
+get nodes:
+{{ manager_get_nodes.stdout }}
+
+get sockets | find 5671:
+{{ manager_get_sockets.stdout }}
+
+get cpu-stats:
+{{ manager_get_cpu_stats.stdout }}
+
+get memory-stats:
+{{ manager_get_memory_stats.stdout }}
+
+get network-stats:
+{{ manager_get_network_stats.stdout }}
+

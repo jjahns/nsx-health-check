@@ -1,0 +1,57 @@
+---
+- hosts: nsxmanager
+  gather_facts: no
+  tasks:
+    - name: nsx-manager - get services
+      raw: get services
+      register: manager_get_services
+
+    - name: nsx-manager - get management-cluster status
+      raw: get management-cluster status
+      register: manager_get_management_cluster_status
+
+    - name: nsx-manager - get ntp
+      raw: get ntp
+      register: manager_get_ntp
+
+    - name: nsx-manager - get ntp associations
+      raw: get ntp associations
+      register: manager_get_ntp_associations
+
+    - name: nsx-manager - get clock
+      raw: get clock
+      register: manager_get_clock
+
+    - name: nsx-manager - get uptime
+      raw: get uptime
+      register: manager_get_uptime
+
+    - name: nsx-manager - get nodes
+      raw: get nodes
+      register: manager_get_nodes
+
+    - name: nsx-manager - get configuration
+      raw: get configuration
+      register: manager_get_configuration
+
+    - name: nsx-manager - get sockets | find 5671
+      raw: get sockets | find 5671
+      register: manager_get_sockets
+
+    - name: nsx-manager - get cpu-stats
+      raw: get cpu-stats
+      register: manager_get_cpu_stats
+
+    - name: nsx-manager - get memory-stats
+      raw: get memory-stats
+      register: manager_get_memory_stats
+
+    - name: nsx-manager - get network-stats
+      raw: get network-stats
+      register: manager_get_network_stats
+
+    - name: write output to file
+      template:
+        src: templates/manager.j2
+        dest: /tmp/{{inventory_hostname}}.txt
+      delegate_to: 127.0.0.1

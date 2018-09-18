@@ -1,0 +1,66 @@
+- hosts: nsxedge
+  gather_facts: no
+  tasks:
+    - name: nsx-edge - get managers
+      raw: get managers
+      register: edge_get_managers
+
+    - name: nsx-edge - get controllers
+      raw: get controllers
+      register: edge_get_controllers
+
+    - name: nsx-edge - get ntp
+      raw: get ntp
+      register: edge_get_ntp
+
+    - name: nsx-edge - get ntp associations
+      raw: get ntp associations
+      register: edge_get_ntp_associations
+
+    - name: nsx-edge - get clock
+      raw: get clock
+      register: edge_get_clock
+
+    - name: nsx-edge - get services
+      raw: get services
+      register: edge_get_services
+
+    - name: nsx-edge - get configuration
+      raw: get configuration
+      register: edge_get_configuration
+
+    - name: nsx-edge - get uptime
+      raw: get uptime
+      register: edge_get_uptime
+
+    - name: nsx-edge - get vteps
+      raw: get vteps
+      register: edge_get_vteps
+
+    - name: nsx-edge - get edge-cluster status
+      raw: get edge-cluster status
+      register: edge_get_edge_cluster_status
+
+    - name: nsx-edge - get tunnel-port
+      raw: get tunnel-port
+      register: edge_get_tunnel_port
+
+    - name: nsx-edge - get host_switches
+      raw: get host-switches
+      register: edge_get_host_switches
+
+    - name: nsx-edge - get high-availability channel
+      raw: get high-availability channel
+      register: edge_get_high_availability_channel
+
+    - name: nsx-edge - get logical-router
+      raw: get logical-router
+      register: edge_get_logical_router
+
+    - name: write output to file
+      template:
+        src: templates/edge.j2
+        dest: /tmp/{{inventory_hostname}}.txt
+      delegate_to: 127.0.0.1
+
+

@@ -1,0 +1,5 @@
+---
+- include: nsxmanager.yml
+- include: nsxcontroller.yml
+- include: nsxedge.yml
+- include: tier0.yml

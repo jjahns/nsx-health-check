@@ -1,0 +1,48 @@
+- hosts: nsxcontroller
+  gather_facts: no
+  tasks:
+    - name: nsx-controller - get services
+      raw: get services
+      register: controller_get_services
+
+    - name: nsx-controller - get control-cluster status verbose
+      raw: get control-cluster status verbose
+      register: controller_get_control_cluster_status_verbose
+
+    - name: nsx-controller - get ntp
+      raw: get ntp
+      register: controller_get_ntp
+
+    - name: nsx-controller - get ntp associations
+      raw: get ntp associations
+      register: controller_get_ntp_associations
+
+    - name: nsx-controller - get clock
+      raw: get clock
+      register: controller_get_clock
+
+    - name: nsx-controller - get uptime
+      raw: get uptime
+      register: controller_get_uptime
+
+    - name: nsx-controller - get managers
+      raw: get managers
+      register: controller_get_managers
+
+    - name: nsx-controller - get transport-node status
+      raw: get transport-node status
+      register: controller_get_transport_node_status
+
+    - name: nsx-controller - get configuration
+      raw: get configuration
+      register: controller_get_configuration
+
+    - name: nsx-controller - get sockets | find 5671
+      raw: get sockets | find 5671
+      register: controller_get_sockets
+
+    - name: write output to file
+      template:
+        src: templates/controller.j2
+        dest: /tmp/{{inventory_hostname}}.txt
+      delegate_to: 127.0.0.1

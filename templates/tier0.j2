@@ -1,0 +1,23 @@
+{{ inventory_hostname }}
+Tier 0 Router SR
+
+get interfaces:
+{{ tier0_interfaces.stdout }}
+
+get bgp neighbor summary:
+{{ tier0_bgp_neighbor_summary.stdout }}
+
+get bfd-config:
+{{ tier0_bfd_config.stdout }}
+
+get forwarding:
+{{ tier0_forwarding.stdout }}
+
+get stats:
+{{ tier0_stats.stdout }}
+
+get high-availability status:
+{{ tier0_high_availability_status.stdout }}
+
+get arp-table:
+{{ tier0_arp_table.stdout }}

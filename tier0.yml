@@ -1,0 +1,55 @@
+---
+- hosts: nsxedge
+  gather_facts: no
+  tasks:
+    - name: tier0 - get logical-router
+      raw: get logical-router
+      register: tier0_logical_router
+
+    - name: tier0 - extract uuid
+      set_fact:
+        tier0: "{{ item.split(' ')[0] }}"
+      with_items: "{{ tier0_logical_router.stdout_lines }}"
+      when: "'SERVICE_ROUTER_TIER0' in item"
+
+    - name: tier0 - get interfaces
+      raw: get logical-router {{ tier0 }} interfaces
+      register: tier0_interfaces
+
+#    - name: tier0 - get route
+#      raw: get logical-router {{ tier0 }} route
+#      register: tier0_route
+
+#    - name: tier0 - get bgp neighbor
+#      raw: get logical-router {{ tier0 }} bgp neighbor
+#      register: tier0_bgp_neighbor
+
+    - name: tier0 - get bgp neighbor summary
+      raw: get logical-router {{ tier0 }} bgp neighbor summary
+      register: tier0_bgp_neighbor_summary
+
+    - name: tier0 - get bfd-config
+      raw: get logical-router {{ tier0 }} bfd-config
+      register: tier0_bfd_config
+
+    - name: tier0 - get forwarding
+      raw: get logical-router {{ tier0 }} forwarding
+      register: tier0_forwarding
+
+    - name: tier0 - get stats
+      raw: get logical-router {{ tier0 }} stats
+      register: tier0_stats
+
+    - name: tier0 - get high-availability status
+      raw: get logical-router {{ tier0 }} high-availability status
+      register: tier0_high_availability_status
+
+    - name: tier0 - get arp-table
+      raw: get logical-router {{ tier0 }} arp-table
+      register: tier0_arp_table
+
+    - name: write output to file
+      template:
+        src: templates/tier0.j2
+        dest: /tmp/{{inventory_hostname}}-tier0.txt
+      delegate_to: 127.0.0.1

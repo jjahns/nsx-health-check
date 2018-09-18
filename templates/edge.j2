@@ -1,0 +1,43 @@
+{{ inventory_hostname }}
+
+get managers:
+{{ edge_get_managers.stdout }}
+
+get controllers:
+{{ edge_get_controllers.stdout }}
+
+get ntp:
+{{ edge_get_ntp.stdout }}
+
+get ntp associations:
+{{ edge_get_ntp_associations.stdout }}
+
+get clock:
+{{ edge_get_clock.stdout }}
+
+get services:
+{{ edge_get_services.stdout }}
+
+get configuration:
+{{ edge_get_configuration.stdout }}
+
+get uptime:
+{{ edge_get_uptime.stdout }}
+
+get vteps:
+{{ edge_get_vteps.stdout }}
+
+get edge-cluster status:
+{{ edge_get_edge_cluster_status.stdout }}
+
+get tunnel-port:
+{{ edge_get_tunnel_port.stdout }}
+
+get host-switches:
+{{ edge_get_host_switches.stdout }}
+
+get high-availability channel:
+{{ edge_get_high_availability_channel.stdout }}
+
+get logical-router:
+{{ edge_get_logical_router.stdout }}
