@@ -19,4 +19,4 @@ nsxedge
 
 [nsx:vars]
 ansible_user=admin
-ansible_ssh_pass=MHOS@dm1n!
+ansible_ssh_pass=
